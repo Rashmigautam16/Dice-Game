@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body{
+        background-color: rgb(216, 242, 244);
+      }
+      #box {
+        border: 2px solid black;
+        width: 700px;
+        height: 300px;
+        margin: auto;
+        display: flex;
+        justify-content: space-around;
+        background-color: white;
+      }
+
+      #box > div > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+        border-radius: 10px;
+        width: 100px;
+        height: 100px;
+        font-size: 55px;
+        font-weight: bold;
+        color: white;
+        background-color: rgb(222, 43, 43);
+        box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+          rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+          rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+          rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+          rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+          rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      }
+      #winner {
+        border-radius: 10px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        width: 150px;
+        height: 150px;
+        margin: auto;
+        display: flex;
+        font-size: 25px;
+        font-weight: bold;
+        color: white;
+        background-color: teal;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      #roll {
+        width: 150px;
+        height: 50px;
+        margin-left: 45%;
+        font-weight: bold;
+        font-size: large;
+        background-color: black;
+        color: white;
+        border-radius: 5px;
+        margin-top: 20px;
+      }
+      #member-1 {
+        animation: spin 1s ease-in-out infinite;
+      }
+     
+    </style>
+  </head>
+  <body>
+    <div id="winner"></div>
+    <div id="box">
+      <div>
+        <h2>Member A</h2>
+        <div id="member-1"></div>
+      </div>
+      <div>
+        <h2>Member B</h2>
+        <div id="member-2"></div>
+      </div>
+      <div>
+        <h2>Member C</h2>
+        <div id="member-3"></div>
+      </div>
+    </div>
+    <button id="roll" >ROLL The DICE</button>
+  </body>
+</html>
+
+<script>
+
+  document.querySelector("#roll").addEventListener("click", funct)
+    function funct() {
+    let x= Number(Math.floor(Math.random() * 6) + 1) ;
+    let y= Number(Math.floor(Math.random() * 6) + 1) ;
+    let z= Number(Math.floor(Math.random() * 6) + 1) ;
+    
+    let arr=[x,y,z];
+     arr.sort()
+     let win=arr[2]
+     let run=arr[1]
+     let lose=arr[0]
+
+    let mam1=document.querySelector("#member-1")
+      mam1.innerText=x
+
+   let mam2=document.querySelector("#member-2")
+      mam2.innerText=y
+
+   let mam3=document.querySelector("#member-3")
+      mam3.innerText=z
+
+         let mam4=document.querySelector("#winner")
+
+      if(win==x){
+        mam1.style.backgroundColor = "green"
+       mam4.innerText ="Member A"
+      }else if(win==y){
+        mam2.style.backgroundColor = "green"
+        mam4.innerText ="Member B"
+      }else if(win==z){
+        mam3.style.backgroundColor = "green"
+        mam4.innerText ="Member C"
+      }
+      
+      if(run==x){
+        mam1.style.backgroundColor = "yellow"
+      }else if(run==y){
+        mam2.style.backgroundColor ="yellow"
+      }else if(run==z){
+        mam3.style.backgroundColor ="yellow"
+      }
+     
+      if(lose==x){
+        mam1.style.backgroundColor = "red"
+      }else if(lose==y){
+        mam2.style.backgroundColor ="red"
+      }else if(lose==z){
+        mam3.style.backgroundColor ="red"
+      }
+
+      if(x==y){
+        mam1.style.backgroundColor = "blue"
+        mam2.style.backgroundColor = "blue"
+      }else if(x==z){
+        mam1.style.backgroundColor = "blue"
+        mam3.style.backgroundColor = "blue"
+      }else if(y==z){
+        mam2.style.backgroundColor = "blue"
+        mam3.style.backgroundColor = "blue"
+      }else if(x==y && y==z){
+        mam1.style.backgroundColor = "blue"
+        mam2.style.backgroundColor = "blue"
+        mam3.style.backgroundColor = "blue"
+        mam4.innerText ="Draw"
+      }
+    }
+
+
+
+
+</script>
